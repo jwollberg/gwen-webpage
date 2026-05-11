@@ -10,16 +10,23 @@ type Props = {
 
 const {
   title = "Gwen | Poems",
-  description = "A polished home for Gwen's poems, images, and music.",
+  description = "A personal home for Gwenevere Ivy Greenwood's poetry, short fiction, and artwork.",
   bodyClass = "",
 } = Astro.props;
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/poems/", label: "Poems" },
-  { href: "/gallery/", label: "Gallery" },
-  { href: "/admin/", label: "Admin" },
+  { href: "/poems/", label: "Poetry" },
+  { href: "/short-stories/", label: "Short Stories" },
+  { href: "/artwork/", label: "Artwork" },
 ];
+
+const currentPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+
+function isActive(href: string): boolean {
+  return currentPath === href || currentPath.startsWith(href);
+}
 ---
 
 <!doctype html>
@@ -34,17 +41,32 @@ const navItems = [
   <body class={bodyClass}>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href={sitePath("/")} aria-label="Gwen home">Gwen</a>
+      <a class="brand" href={sitePath("/")} aria-label="Gwenevere Ivy Greenwood home">
+        Gwenevere Ivy Greenwood
+      </a>
       <nav class="site-nav" aria-label="Main navigation">
-        {navItems.map((item) => <a href={sitePath(item.href)}>{item.label}</a>)}
+        {
+          navItems.map((item) => (
+            <a
+              href={sitePath(item.href)}
+              class:list={{ active: isActive(item.href) }}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
       </nav>
     </header>
     <main id="main">
       <slot />
     </main>
     <footer class="site-footer">
-      <p>Gwen</p>
-      <p>Poems, images, and music kept in simple files.</p>
+      <p>Gwenevere Ivy Greenwood</p>
+      <p>
+        Poetry, short fiction, and artwork.
+        <a href={sitePath("/admin/")}>Admin</a>
+      </p>
     </footer>
   </body>
 </html>

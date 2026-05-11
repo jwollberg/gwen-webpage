@@ -1,74 +1,48 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { featuredPoems, getPoemPath, poems } from "../lib/poems";
 import { mediaPath, sitePath } from "../lib/paths";
 
-const galleryImages = poems.slice(0, 4);
+const homeBackground = "/media/images/writing-desk-hero.png";
+const portraitImage = "/media/images/still-life-roses.png";
 ---
 
-<SiteLayout>
-  <section class="hero" style={`--hero-image: url('${mediaPath("/media/images/writing-desk-hero.png")}')`}>
-    <div class="hero-inner">
-      <h1>Poems for the in-between light.</h1>
-      <p>
-        Writing down the things that stay with us quietly, persistently, and
-        faithfully until they become song.
-      </p>
-      <div class="cta-row">
-        <a class="button" href={sitePath("/poems/")}>Browse poems <span aria-hidden="true">→</span></a>
-        <a class="button secondary" href={sitePath("/admin/")}>Admin <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </section>
+<SiteLayout
+  title="Gwenevere Ivy Greenwood"
+  description="The personal poetry, short fiction, and artwork website of Gwenevere Ivy Greenwood."
+  bodyClass="home-body"
+>
+  <section
+    class="fixed-photo-page home-page"
+    style={`--page-image: url('${mediaPath(homeBackground)}')`}
+  >
+    <div class="home-scroll">
+      <section class="about-panel" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="quiet-label">Poetry, short fiction, and visual work</p>
+          <h1 id="about-title">A private weather made public.</h1>
+          <p>
+            Gwenevere Ivy Greenwood is a writer and artist creating poems,
+            short fiction, and visual work shaped by memory, nature, grief,
+            tenderness, and the strange light of ordinary rooms.
+          </p>
+          <p>
+            This site is a personal archive: part reading room, part journal,
+            part visual collection. It gathers finished work, work in progress,
+            and the images that help carry the mood of the writing.
+          </p>
+          <div class="home-actions" aria-label="Explore the site">
+            <a href={sitePath("/poems/")}>Read poetry</a>
+            <a href={sitePath("/short-stories/")}>Short stories</a>
+          </div>
+        </div>
 
-  <section class="section dark">
-    <div class="section-header">
-      <h2>Recent Poems</h2>
-      <a class="text-link" href={sitePath("/poems/")}>View all poems →</a>
-    </div>
-    <div class="poem-grid">
-      {
-        featuredPoems.map((poem) => (
-          <a class="poem-card" href={getPoemPath(poem)}>
-            <img src={mediaPath(poem.image)} alt="" loading="lazy" />
-            <div>
-              <h3>{poem.title}</h3>
-              <p>{poem.summary}</p>
-              <p class="meta">{poem.dateLabel}</p>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="section dark">
-    <div class="section-header">
-      <h2>Gallery</h2>
-      <a class="text-link" href={sitePath("/gallery/")}>View gallery →</a>
-    </div>
-    <div class="gallery-strip">
-      {
-        galleryImages.map((poem) => (
-          <a href={getPoemPath(poem)} aria-label={`Open ${poem.title}`}>
-            <img src={mediaPath(poem.image)} alt="" loading="lazy" />
-          </a>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="section paper quote-band">
-    <blockquote>
-      “I write to make sense of the soft things, the ones that blur, the ones
-      that last.”
-    </blockquote>
-    <div>
-      <p>
-        Each poem page is built for a full reading mood: image, scrollable text,
-        and music when a track is attached.
-      </p>
-      <a class="button" href={sitePath("/admin/")}>Add new work <span aria-hidden="true">→</span></a>
+        <figure class="portrait-frame">
+          <img
+            src={mediaPath(portraitImage)}
+            alt="A still-life photograph from Gwen's visual archive"
+          />
+        </figure>
+      </section>
     </div>
   </section>
 </SiteLayout>
