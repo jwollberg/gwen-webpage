@@ -1,17 +1,17 @@
 ---
-siteBackgroundColor: "#07110f"
-panelBackgroundColor: "#10201b"
-deepPanelColor: "#182a24"
-lightPanelColor: "#f5efe4"
-lightPanelSoftColor: "#ebe0cf"
-mainTextColor: "#fff7eb"
-mutedTextColor: "#d4c5ae"
-lightPanelTextColor: "#2e2921"
-accentColor: "#a3ad7b"
-accentMutedColor: "#7c8a5b"
-buttonColor: "#5b1216"
-linkColor: "#c99a4a"
-bodyFont: "system-sans"
-headingFont: "cormorant-garamond"
-brandFont: "ms-madi"
+siteBackgroundColor: '#2a8345'
+panelBackgroundColor: '#10201b'
+deepPanelColor: '#182a24'
+lightPanelColor: '#f5efe4'
+lightPanelSoftColor: '#ebe0cf'
+mainTextColor: '#fff7eb'
+mutedTextColor: '#d4c5ae'
+lightPanelTextColor: '#2e2921'
+accentColor: '#a3ad7b'
+accentMutedColor: '#7c8a5b'
+buttonColor: '#5b1216'
+linkColor: '#c99a4a'
+bodyFont: system-sans
+headingFont: cormorant-garamond
+brandFont: ms-madi
 ---
