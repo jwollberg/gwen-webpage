@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Ms+Madi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Ms+Madi&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap");
 
 :root {
   --ink: #07110f;
@@ -171,6 +171,125 @@ textarea {
 .home-page {
   min-height: 125svh;
   padding-bottom: 18vh;
+}
+
+.editable-page {
+  background-color: var(--page-bg, var(--ink));
+  background-image:
+    linear-gradient(90deg, rgba(4, 8, 7, 0.9), rgba(4, 8, 7, 0.58) 45%, rgba(4, 8, 7, 0.42)),
+    var(--page-image);
+  background-attachment: fixed;
+  background-position: var(--page-bg-position, center);
+  background-size: cover;
+  min-height: 100svh;
+  padding: calc(var(--header-space) + 2.75rem) 4.5rem 5rem;
+}
+
+.editable-page.background-color {
+  background-image: none;
+}
+
+.editable-page-shell {
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+.editable-page-panel {
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(135deg, rgba(7, 17, 15, 0.86), rgba(24, 42, 36, 0.66)),
+    rgba(7, 17, 15, 0.74);
+  border: 1px solid rgba(245, 239, 228, 0.18);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1.08fr) minmax(18rem, 0.72fr);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.editable-page.image-left .editable-page-panel {
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.08fr);
+}
+
+.editable-page.image-none .editable-page-panel {
+  display: block;
+}
+
+.editable-page.width-narrow .editable-page-panel {
+  max-width: 52rem;
+}
+
+.editable-page.width-standard .editable-page-panel {
+  max-width: 62rem;
+}
+
+.editable-page.width-wide .editable-page-panel {
+  max-width: 72rem;
+}
+
+.editable-page.panel-solid .editable-page-panel {
+  background: rgba(7, 17, 15, 0.92);
+}
+
+.editable-page.panel-paper .editable-page-panel {
+  background: rgba(245, 239, 228, 0.94);
+  color: var(--body);
+}
+
+.editable-page.panel-simple .editable-page-panel {
+  backdrop-filter: none;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.editable-page.panel-paper .quiet-label,
+.editable-page.panel-paper .editable-page-copy h1 {
+  color: var(--oxblood);
+}
+
+.editable-page.panel-paper .editable-page-copy p {
+  color: var(--body);
+}
+
+.editable-page-copy {
+  align-self: center;
+}
+
+.editable-page-copy h1 {
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: clamp(2.7rem, 6vw, 5.35rem);
+  font-weight: 400;
+  line-height: 0.98;
+  margin: 0;
+}
+
+.editable-page-copy p {
+  color: #e1d5c3;
+  font-size: 1.11rem;
+  line-height: 1.75;
+  margin: 1.25rem 0 0;
+  max-width: 43rem;
+}
+
+.embedded-frame {
+  align-self: stretch;
+  border: 1px solid rgba(245, 239, 228, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  min-height: 24rem;
+  overflow: hidden;
+}
+
+.embedded-frame img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .home-scroll {
@@ -908,6 +1027,7 @@ textarea {
   .gallery-grid,
   .publisher-layout,
   .page-hero,
+  .editable-page,
   .fixed-photo-page,
   .reader,
   .site-footer {
@@ -933,6 +1053,7 @@ textarea {
   .publisher-layout,
   .reader-shell,
   .quote-band,
+  .editable-page-panel,
   .about-panel,
   .artwork-strip {
     grid-template-columns: 1fr;
@@ -984,12 +1105,22 @@ textarea {
     padding-top: calc(var(--header-space) + 1.5rem);
   }
 
+  .editable-page {
+    padding-bottom: 3rem;
+    padding-top: calc(var(--header-space) + 1.5rem);
+  }
+
   .about-panel,
+  .editable-page-panel,
   .quiet-shell {
     padding: 1.25rem;
   }
 
   .portrait-frame {
+    min-height: 18rem;
+  }
+
+  .embedded-frame {
     min-height: 18rem;
   }
 

@@ -1,11 +1,9 @@
 ---
+import EditablePageIntro from "../components/EditablePageIntro.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { getEntry } from "astro:content";
-import { mediaPath, sitePath } from "../lib/paths";
+import { getPageSettings } from "../lib/settings";
 
-const homeSettings = await getEntry("settings", "home");
-const homeBackground = homeSettings?.data.homeImage || "/media/images/writing-desk-hero.png";
-const portraitImage = "/media/images/still-life-roses.png";
+const homeSettings = await getPageSettings("home");
 ---
 
 <SiteLayout
@@ -13,38 +11,5 @@ const portraitImage = "/media/images/still-life-roses.png";
   description="The personal poetry, short fiction, and artwork website of Gwenevere Ivy Greenwood."
   bodyClass="home-body"
 >
-  <section
-    class="fixed-photo-page home-page"
-    style={`--page-image: url('${mediaPath(homeBackground)}')`}
-  >
-    <div class="home-scroll">
-      <section class="about-panel" aria-labelledby="about-title">
-        <div class="about-copy">
-          <p class="quiet-label">Poetry, short fiction, and visual work</p>
-          <h1 id="about-title">A private weather made public.</h1>
-          <p>
-            Gwenevere Ivy Greenwood is a writer and artist creating poems,
-            short fiction, and visual work shaped by memory, nature, grief,
-            tenderness, and the strange light of ordinary rooms.
-          </p>
-          <p>
-            This site is a personal archive: part reading room, part journal,
-            part visual collection. It gathers finished work, work in progress,
-            and the images that help carry the mood of the writing.
-          </p>
-          <div class="home-actions" aria-label="Explore the site">
-            <a href={sitePath("/poems/")}>Read poetry</a>
-            <a href={sitePath("/short-stories/")}>Short stories</a>
-          </div>
-        </div>
-
-        <figure class="portrait-frame">
-          <img
-            src={mediaPath(portraitImage)}
-            alt="A still-life photograph from Gwen's visual archive"
-          />
-        </figure>
-      </section>
-    </div>
-  </section>
+  <EditablePageIntro settings={homeSettings} titleId="about-title" className="home-page" />
 </SiteLayout>

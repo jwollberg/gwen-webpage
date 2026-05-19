@@ -26,12 +26,400 @@ collections:
   - name: "site_settings"
     label: "Site Settings"
     files:
+      - name: "theme"
+        label: "Colors and Fonts"
+        file: "src/content/settings/theme.md"
+        format: "frontmatter"
+        fields:
+          - { label: "Whole site background color", name: "siteBackgroundColor", widget: "color", required: false }
+          - { label: "Dark panel color", name: "panelBackgroundColor", widget: "color", required: false }
+          - { label: "Deep panel color", name: "deepPanelColor", widget: "color", required: false }
+          - { label: "Light text box color", name: "lightPanelColor", widget: "color", required: false }
+          - { label: "Soft light color", name: "lightPanelSoftColor", widget: "color", required: false }
+          - { label: "Main light text color", name: "mainTextColor", widget: "color", required: false }
+          - { label: "Muted text color", name: "mutedTextColor", widget: "color", required: false }
+          - { label: "Text color on light boxes", name: "lightPanelTextColor", widget: "color", required: false }
+          - { label: "Accent color", name: "accentColor", widget: "color", required: false }
+          - { label: "Muted accent color", name: "accentMutedColor", widget: "color", required: false }
+          - { label: "Button color", name: "buttonColor", widget: "color", required: false }
+          - { label: "Link color", name: "linkColor", widget: "color", required: false }
+          - label: "Body font"
+            name: "bodyFont"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Clean system sans", value: "system-sans" }
+              - { label: "Cormorant Garamond", value: "cormorant-garamond" }
+              - { label: "Libre Baskerville", value: "libre-baskerville" }
+              - { label: "Lora", value: "lora" }
+              - { label: "Merriweather", value: "merriweather" }
+              - { label: "Playfair Display", value: "playfair-display" }
+              - { label: "System serif", value: "system-serif" }
+          - label: "Heading font"
+            name: "headingFont"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Cormorant Garamond", value: "cormorant-garamond" }
+              - { label: "Playfair Display", value: "playfair-display" }
+              - { label: "Libre Baskerville", value: "libre-baskerville" }
+              - { label: "Lora", value: "lora" }
+              - { label: "Merriweather", value: "merriweather" }
+              - { label: "System serif", value: "system-serif" }
+          - label: "Site name font"
+            name: "brandFont"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Ms Madi script", value: "ms-madi" }
+              - { label: "Cormorant Garamond", value: "cormorant-garamond" }
+              - { label: "Playfair Display", value: "playfair-display" }
+              - { label: "Lora", value: "lora" }
       - name: "home"
         label: "Home Page"
         file: "src/content/settings/home.md"
         format: "frontmatter"
         fields:
-          - { label: "Main page image", name: "homeImage", widget: "image", choose_url: false, hint: "This controls the large background image on the main page." }
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false, hint: "Short description for screen readers." }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "First text box", name: "introText", widget: "text" }
+          - { label: "Second text box", name: "bodyText", widget: "text", required: false }
+          - { label: "First button text", name: "primaryButtonLabel", widget: "string", required: false }
+          - { label: "First button link", name: "primaryButtonUrl", widget: "string", required: false }
+          - { label: "Second button text", name: "secondaryButtonLabel", widget: "string", required: false }
+          - { label: "Second button link", name: "secondaryButtonUrl", widget: "string", required: false }
+      - name: "poetry"
+        label: "Poetry Page"
+        file: "src/content/settings/poetry.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text" }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+      - name: "short-stories"
+        label: "Short Stories Page"
+        file: "src/content/settings/short-stories.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text" }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+      - name: "artwork"
+        label: "Artwork Page"
+        file: "src/content/settings/artwork.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text" }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+          - label: "Preview images"
+            name: "images"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Image", name: "image", widget: "image", choose_url: false }
+              - { label: "Image description", name: "alt", widget: "string", required: false }
+      - name: "gallery"
+        label: "Gallery Page"
+        file: "src/content/settings/gallery.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text" }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+      - name: "publisher"
+        label: "Publisher Page"
+        file: "src/content/settings/publisher.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text" }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+          - { label: "Website editor section text", name: "websiteEditorText", widget: "text", required: false }
+          - { label: "File folders section text", name: "foldersText", widget: "text", required: false }
+          - { label: "New poem template section text", name: "templateIntro", widget: "text", required: false }
+          - { label: "Publish flow section text", name: "publishFlowIntro", widget: "text", required: false }
   - name: "poems"
     label: "Poems"
     folder: "src/content/poems"

@@ -1,43 +1,25 @@
 ---
+import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { mediaPath } from "../../lib/paths";
+import { getPageSettings } from "../../lib/settings";
 
-const artworkBackground = "/media/images/still-life-roses.png";
-const artworkImages = [
-  "/media/images/rain-window.png",
-  "/media/images/shoreline-notebook.png",
-  "/media/images/writing-desk-hero.png",
-];
+const artworkSettings = await getPageSettings("artwork");
 ---
 
 <SiteLayout
   title="Artwork | Gwen"
   description="A developing visual archive for Gwen's photography, drawings, and mixed media artwork."
 >
-  <section
-    class="fixed-photo-page artwork-page"
-    style={`--page-image: url('${mediaPath(artworkBackground)}')`}
-  >
-    <div class="artwork-shell">
-      <div class="artwork-copy">
-        <p class="quiet-label">Artwork</p>
-        <h1>A visual archive in progress.</h1>
-        <p>
-          This section will eventually hold photography, drawings, and mixed
-          media work. For now, it keeps the mood open and quiet while the final
-          layout takes shape.
-        </p>
-      </div>
-
-      <div class="artwork-strip" aria-label="Artwork preview images">
-        {
-          artworkImages.map((image) => (
-            <figure>
-              <img src={mediaPath(image)} alt="" loading="lazy" />
-            </figure>
-          ))
-        }
-      </div>
+  <EditablePageIntro settings={artworkSettings} titleId="artwork-title" className="artwork-page">
+    <div class="artwork-strip" aria-label="Artwork preview images">
+      {
+        artworkSettings.images.map((item) => (
+          <figure>
+            <img src={mediaPath(item.image)} alt={item.alt} loading="lazy" />
+          </figure>
+        ))
+      }
     </div>
-  </section>
+  </EditablePageIntro>
 </SiteLayout>

@@ -1,27 +1,14 @@
 ---
+import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { mediaPath } from "../../lib/paths";
+import { getPageSettings } from "../../lib/settings";
 
-const storiesBackground = "/media/images/shoreline-notebook.png";
+const storySettings = await getPageSettings("short-stories");
 ---
 
 <SiteLayout
   title="Short Stories | Gwen"
   description="Short fiction by Gwenevere Ivy Greenwood."
 >
-  <section
-    class="fixed-photo-page quiet-page"
-    style={`--page-image: url('${mediaPath(storiesBackground)}')`}
-  >
-    <div class="quiet-shell">
-      <p class="quiet-label">Short Stories</p>
-      <h1>Under construction</h1>
-      <p>
-        Short stories are currently being prepared and submitted for
-        publication. Once they appear in magazines or journals, this page will
-        gather links to those published pieces instead of posting the full
-        stories here.
-      </p>
-    </div>
-  </section>
+  <EditablePageIntro settings={storySettings} titleId="short-stories-title" />
 </SiteLayout>

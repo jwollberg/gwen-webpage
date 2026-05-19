@@ -1,0 +1,22 @@
+---
+backgroundType: "image"
+backgroundColor: "#07110f"
+backgroundImage: "/media/images/still-life-roses.png"
+backgroundPosition: "center"
+embeddedImage: "/media/images/writing-desk-hero.png"
+embeddedImageAlt: "A writing desk"
+embeddedImagePosition: "right"
+textBoxWidth: "standard"
+textBoxStyle: "glass"
+label: "Artwork"
+heading: "A visual archive in progress."
+introText: "This section will eventually hold photography, drawings, and mixed media work. For now, it keeps the mood open and quiet while the final layout takes shape."
+bodyText: ""
+images:
+  - image: "/media/images/rain-window.png"
+    alt: "Rain on a window"
+  - image: "/media/images/shoreline-notebook.png"
+    alt: "A notebook near the shoreline"
+  - image: "/media/images/writing-desk-hero.png"
+    alt: "A writing desk"
+---

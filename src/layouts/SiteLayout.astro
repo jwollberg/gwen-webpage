@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { sitePath } from "../lib/paths";
+import { getThemeSettings } from "../lib/settings";
 
 type Props = {
   title?: string;
@@ -23,6 +24,7 @@ const navItems = [
 const currentPath = Astro.url.pathname.endsWith("/")
   ? Astro.url.pathname
   : `${Astro.url.pathname}/`;
+const theme = await getThemeSettings();
 
 function isActive(href: string): boolean {
   return currentPath === href || currentPath.startsWith(href);
@@ -35,10 +37,10 @@ function isActive(href: string): boolean {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#09120f" />
+    <meta name="theme-color" content={theme.siteBackgroundColor} />
     <title>{title}</title>
   </head>
-  <body class={bodyClass}>
+  <body class={bodyClass} style={theme.style}>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a class="brand" href={sitePath("/")} aria-label="Gwenevere Ivy Greenwood home">

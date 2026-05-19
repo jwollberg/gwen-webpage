@@ -1,22 +1,24 @@
 ---
+import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { getPoemPath, poems } from "../../lib/poems";
 import { mediaPath } from "../../lib/paths";
+import { getPageSettings } from "../../lib/settings";
+
+const gallerySettings = await getPageSettings("gallery");
 ---
 
 <SiteLayout title="Gallery | Gwen" description="Images paired with Gwen's poems.">
-  <section class="page-hero">
-    <h1>Gallery</h1>
-    <p>Images from the poem archive, gathered in one quiet place.</p>
-  </section>
-  <section class="gallery-grid" aria-label="Image gallery">
-    {
-      poems.map((poem) => (
-        <a class="gallery-item" href={getPoemPath(poem)}>
-          <img src={mediaPath(poem.image)} alt="" loading="lazy" />
-          <p>{poem.title}</p>
-        </a>
-      ))
-    }
-  </section>
+  <EditablePageIntro settings={gallerySettings} titleId="gallery-title">
+    <section class="gallery-grid" aria-label="Image gallery">
+      {
+        poems.map((poem) => (
+          <a class="gallery-item" href={getPoemPath(poem)}>
+            <img src={mediaPath(poem.image)} alt="" loading="lazy" />
+            <p>{poem.title}</p>
+          </a>
+        ))
+      }
+    </section>
+  </EditablePageIntro>
 </SiteLayout>

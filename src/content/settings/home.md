@@ -1,3 +1,20 @@
 ---
-homeImage: /media/09.03.2020_17415003.JPG
+homeImage: "/media/09.03.2020_17415003.JPG"
+backgroundType: "image"
+backgroundColor: "#07110f"
+backgroundImage: "/media/09.03.2020_17415003.JPG"
+backgroundPosition: "center"
+embeddedImage: "/media/images/still-life-roses.png"
+embeddedImageAlt: "A still-life photograph from Gwen's visual archive"
+embeddedImagePosition: "right"
+textBoxWidth: "wide"
+textBoxStyle: "glass"
+label: "Poetry, short fiction, and visual work"
+heading: "A private weather made public."
+introText: "Gwenevere Ivy Greenwood is a writer and artist creating poems, short fiction, and visual work shaped by memory, nature, grief, tenderness, and the strange light of ordinary rooms."
+bodyText: "This site is a personal archive: part reading room, part journal, part visual collection. It gathers finished work, work in progress, and the images that help carry the mood of the writing."
+primaryButtonLabel: "Read poetry"
+primaryButtonUrl: "/poems/"
+secondaryButtonLabel: "Short stories"
+secondaryButtonUrl: "/short-stories/"
 ---

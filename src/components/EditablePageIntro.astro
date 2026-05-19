@@ -1,0 +1,82 @@
+---
+import { mediaPath, sitePath } from "../lib/paths";
+import type { PageSettings } from "../lib/settings";
+
+type Props = {
+  settings: PageSettings;
+  titleId: string;
+  className?: string;
+};
+
+const { settings, titleId, className = "" } = Astro.props;
+const showImage = settings.embeddedImage && settings.embeddedImagePosition !== "hidden";
+const imageFirst = showImage && settings.embeddedImagePosition === "left";
+const imageLast = showImage && settings.embeddedImagePosition === "right";
+const useBackgroundImage = settings.backgroundType === "image" && settings.backgroundImage;
+const pageImage = useBackgroundImage ? `url('${mediaPath(settings.backgroundImage)}')` : "none";
+const classes = [
+  "editable-page",
+  className,
+  `background-${settings.backgroundType}`,
+  `image-${showImage ? settings.embeddedImagePosition : "none"}`,
+  `width-${settings.textBoxWidth}`,
+  `panel-${settings.textBoxStyle}`,
+]
+  .filter(Boolean)
+  .join(" ");
+const style = [
+  `--page-image: ${pageImage}`,
+  `--page-bg: ${settings.backgroundColor}`,
+  `--page-bg-position: ${settings.backgroundPosition}`,
+].join("; ");
+---
+
+<section class={classes} style={style}>
+  <div class="editable-page-shell">
+    <section class="editable-page-panel" aria-labelledby={titleId}>
+      {
+        imageFirst && (
+          <figure class="embedded-frame">
+            <img src={mediaPath(settings.embeddedImage)} alt={settings.embeddedImageAlt} />
+          </figure>
+        )
+      }
+
+      <div class="editable-page-copy">
+        {settings.label && <p class="quiet-label">{settings.label}</p>}
+        <h1 id={titleId}>{settings.heading}</h1>
+        {settings.introText && <p>{settings.introText}</p>}
+        {settings.bodyText && <p>{settings.bodyText}</p>}
+
+        {
+          (settings.primaryButtonLabel || settings.secondaryButtonLabel) && (
+            <div class="home-actions" aria-label="Page links">
+              {
+                settings.primaryButtonLabel && settings.primaryButtonUrl && (
+                  <a href={sitePath(settings.primaryButtonUrl)}>{settings.primaryButtonLabel}</a>
+                )
+              }
+              {
+                settings.secondaryButtonLabel && settings.secondaryButtonUrl && (
+                  <a href={sitePath(settings.secondaryButtonUrl)}>{settings.secondaryButtonLabel}</a>
+                )
+              }
+            </div>
+          )
+        }
+
+        <slot name="copy-extra" />
+      </div>
+
+      {
+        imageLast && (
+          <figure class="embedded-frame">
+            <img src={mediaPath(settings.embeddedImage)} alt={settings.embeddedImageAlt} />
+          </figure>
+        )
+      }
+    </section>
+
+    <slot />
+  </div>
+</section>

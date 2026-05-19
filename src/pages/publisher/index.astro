@@ -1,6 +1,10 @@
 ---
+import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { sitePath } from "../../lib/paths";
+import { getPageSettings } from "../../lib/settings";
+
+const publisherSettings = await getPageSettings("publisher");
 
 const template = `---
 title: "Your Poem Title"
@@ -25,52 +29,46 @@ add two spaces at the end of the previous line.`;
 ---
 
 <SiteLayout title="Publisher | Gwen" description="Add poems, images, and music.">
-  <section class="page-hero">
-    <h1>Publisher</h1>
-    <p>
-      The admin screen lives at <code>/admin/</code>. It gives you a website
-      login and form editor for poems, images, and music.
-    </p>
-  </section>
-
-  <section class="publisher-layout">
-    <div class="publisher-section">
-      <h2>Website editor</h2>
-      <p>
-        Open the admin page from your published website. You will see a login
-        screen, then a form-based editor for adding and changing poems.
-      </p>
-      <p>
-        <a class="button" href={sitePath("/admin/")}>Open admin <span aria-hidden="true">→</span></a>
-      </p>
-    </div>
-
-    <div class="publisher-section">
-      <h2>File folders</h2>
-      <ul>
-        <li><code>src/content/categories/</code> holds editable category files.</li>
-        <li><code>src/content/poems/</code> holds poem files.</li>
-        <li><code>public/media/images/</code> holds poem images.</li>
-        <li><code>public/media/music/</code> holds music files.</li>
-      </ul>
-    </div>
-
-    <div class="publisher-section">
-      <h2>New poem template</h2>
-      <div class="template-box">
-        <pre>{template}</pre>
+  <EditablePageIntro settings={publisherSettings} titleId="publisher-title">
+    <section class="publisher-layout">
+      <div class="publisher-section">
+        <h2>Website editor</h2>
+        <p>{publisherSettings.websiteEditorText}</p>
+        <p>
+          <a class="button" href={sitePath("/admin/")}>Open admin <span aria-hidden="true">&rarr;</span></a>
+        </p>
       </div>
-    </div>
 
-    <div class="publisher-section">
-      <h2>Publish flow</h2>
-      <ol>
-        <li>Log in at <code>/admin/</code>.</li>
-        <li>Edit category names in <code>Poem Categories</code>.</li>
-        <li>Open the <code>Poems</code> section.</li>
-        <li>Add or edit the poem, image, and music.</li>
-        <li>Click publish. GitHub Pages will rebuild the public site.</li>
-      </ol>
-    </div>
-  </section>
+      <div class="publisher-section">
+        <h2>File folders</h2>
+        {publisherSettings.foldersText && <p>{publisherSettings.foldersText}</p>}
+        <ul>
+          <li><code>src/content/categories/</code> holds editable category files.</li>
+          <li><code>src/content/poems/</code> holds poem files.</li>
+          <li><code>public/media/images/</code> holds poem images.</li>
+          <li><code>public/media/music/</code> holds music files.</li>
+        </ul>
+      </div>
+
+      <div class="publisher-section">
+        <h2>New poem template</h2>
+        {publisherSettings.templateIntro && <p>{publisherSettings.templateIntro}</p>}
+        <div class="template-box">
+          <pre>{template}</pre>
+        </div>
+      </div>
+
+      <div class="publisher-section">
+        <h2>Publish flow</h2>
+        {publisherSettings.publishFlowIntro && <p>{publisherSettings.publishFlowIntro}</p>}
+        <ol>
+          <li>Log in at <code>/admin/</code>.</li>
+          <li>Edit category names in <code>Poem Categories</code>.</li>
+          <li>Open the <code>Poems</code> section.</li>
+          <li>Add or edit the poem, image, and music.</li>
+          <li>Click publish. GitHub Pages will rebuild the public site.</li>
+        </ol>
+      </div>
+    </section>
+  </EditablePageIntro>
 </SiteLayout>

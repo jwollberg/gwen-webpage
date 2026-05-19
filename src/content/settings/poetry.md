@@ -1,0 +1,15 @@
+---
+backgroundType: "image"
+backgroundColor: "#07110f"
+backgroundImage: "/media/images/rain-window.png"
+backgroundPosition: "center"
+embeddedImage: "/media/images/shoreline-notebook.png"
+embeddedImageAlt: "A notebook near the shoreline"
+embeddedImagePosition: "right"
+textBoxWidth: "standard"
+textBoxStyle: "glass"
+label: "Poetry"
+heading: "Poems and collections"
+introText: "Open a title to read the poem here. The page stays still enough to feel like a room, while the writing moves at its own pace."
+bodyText: ""
+---

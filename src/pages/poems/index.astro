@@ -1,67 +1,54 @@
 ---
+import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { categories } from "../../lib/poems";
-import { mediaPath } from "../../lib/paths";
+import { getPageSettings } from "../../lib/settings";
 
-const poetryBackground = "/media/images/rain-window.png";
+const poetrySettings = await getPageSettings("poetry");
 const poetryCollections = categories.filter((category) => category.poems.length > 0);
 ---
 
 <SiteLayout title="Poetry | Gwen" description="Read Gwen's poems in place.">
-  <section
-    class="fixed-photo-page poetry-page"
-    style={`--page-image: url('${mediaPath(poetryBackground)}')`}
-  >
-    <div class="poetry-shell">
-      <header class="poetry-intro">
-        <p class="quiet-label">Poetry</p>
-        <h1>Poems and collections</h1>
-        <p>
-          Open a title to read the poem here. The page stays still enough to
-          feel like a room, while the writing moves at its own pace.
-        </p>
-      </header>
+  <EditablePageIntro settings={poetrySettings} titleId="poetry-title" className="poetry-page">
+    <div class="collection-list" aria-label="Poetry collections">
+      {
+        poetryCollections.map((category) => (
+          <section class="poetry-collection" aria-labelledby={`${category.slug}-title`}>
+            <div class="collection-heading">
+              <h2 id={`${category.slug}-title`}>{category.title}</h2>
+            </div>
 
-      <div class="collection-list" aria-label="Poetry collections">
-        {
-          poetryCollections.map((category) => (
-            <section class="poetry-collection" aria-labelledby={`${category.slug}-title`}>
-              <div class="collection-heading">
-                <h2 id={`${category.slug}-title`}>{category.title}</h2>
-              </div>
+            <div class="poem-accordion">
+              {
+                category.poems.map((poem) => {
+                  const Content = poem.Content;
 
-              <div class="poem-accordion">
-                {
-                  category.poems.map((poem) => {
-                    const Content = poem.Content;
-
-                    return (
-                      <details class="poem-disclosure">
-                        <summary>
-                          <span>
-                            <strong>{poem.title}</strong>
-                            <small>{poem.dateLabel}</small>
-                          </span>
-                          <span class="summary-mark" aria-hidden="true">
-                            <span class="open-label">Open</span>
-                            <span class="close-label">Close</span>
-                          </span>
-                        </summary>
-                        <div class="inline-poem">
-                          <p class="poem-summary">{poem.summary}</p>
-                          <div class="poem-body">
-                            <Content />
-                          </div>
+                  return (
+                    <details class="poem-disclosure">
+                      <summary>
+                        <span>
+                          <strong>{poem.title}</strong>
+                          <small>{poem.dateLabel}</small>
+                        </span>
+                        <span class="summary-mark" aria-hidden="true">
+                          <span class="open-label">Open</span>
+                          <span class="close-label">Close</span>
+                        </span>
+                      </summary>
+                      <div class="inline-poem">
+                        <p class="poem-summary">{poem.summary}</p>
+                        <div class="poem-body">
+                          <Content />
                         </div>
-                      </details>
-                    );
-                  })
-                }
-              </div>
-            </section>
-          ))
-        }
-      </div>
+                      </div>
+                    </details>
+                  );
+                })
+              }
+            </div>
+          </section>
+        ))
+      }
     </div>
-  </section>
+  </EditablePageIntro>
 </SiteLayout>
