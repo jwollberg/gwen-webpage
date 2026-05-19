@@ -1,5 +1,5 @@
 ---
-siteBackgroundColor: '#2a8345'
+siteBackgroundColor: '#000000'
 panelBackgroundColor: '#10201b'
 deepPanelColor: '#182a24'
 lightPanelColor: '#f5efe4'
