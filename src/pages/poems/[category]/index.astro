@@ -32,12 +32,10 @@ const categoryPoems = getPoemsByCategory(category.slug);
     <div class="poem-grid">
     {
       categoryPoems.map((poem) => (
-        <a class="poem-card" href={getPoemPath(poem)}>
-          <img src={mediaPath(poem.image)} alt="" loading="lazy" />
+        <a class:list={["poem-card", !poem.image && "poem-card-no-image"]} href={getPoemPath(poem)}>
+          {poem.image && <img src={mediaPath(poem.image)} alt="" loading="lazy" />}
           <div>
             <h3>{poem.title}</h3>
-            <p>{poem.summary}</p>
-            <p class="meta">{poem.dateLabel}</p>
             {poem.tags && (
               <div class="tags" aria-label="Tags">
                 {poem.tags.map((tag) => (

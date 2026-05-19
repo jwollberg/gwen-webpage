@@ -11,10 +11,8 @@ type CategoryModule = {
 
 export type PoemFrontmatter = {
   title: string;
-  date: string | Date;
-  summary: string;
   category: string;
-  image: string;
+  image?: string;
   music?: string;
   tags?: string[];
   featured?: boolean;
@@ -23,8 +21,6 @@ export type PoemFrontmatter = {
 
 export type Poem = PoemFrontmatter & {
   slug: string;
-  dateValue: Date;
-  dateLabel: string;
   Content: any;
 };
 
@@ -51,29 +47,18 @@ const categoryModules = import.meta.glob<CategoryModule>(
   },
 );
 
-function toDate(value: string | Date): Date {
-  if (value instanceof Date) {
-    return value;
-  }
-
-  return new Date(`${value}T00:00:00`);
-}
-
 export const poems: Poem[] = Object.entries(poemModules)
   .map(([path, module]) => {
     const slug = path.split("/").pop()?.replace(".md", "") ?? "";
-    const dateValue = toDate(module.frontmatter.date);
 
     return {
       ...module.frontmatter,
       slug,
-      dateValue,
-      dateLabel: formatDate(dateValue),
       Content: module.Content,
     };
   })
   .filter((poem) => !poem.draft)
-  .sort((a, b) => b.dateValue.getTime() - a.dateValue.getTime());
+  .sort((a, b) => a.title.localeCompare(b.title));
 
 export const categories: Category[] = Object.entries(categoryModules)
   .map(([path, module]) => {
@@ -102,14 +87,6 @@ export const categoryMap = new Map(
 );
 
 export const featuredPoems = poems.filter((poem) => poem.featured).slice(0, 3);
-
-export function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat("en", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(date);
-}
 
 export function getPoemBySlug(slug: string): Poem | undefined {
   return poems.find((poem) => poem.slug === slug);

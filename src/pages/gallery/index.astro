@@ -12,7 +12,7 @@ const gallerySettings = await getPageSettings("gallery");
   <EditablePageIntro settings={gallerySettings} titleId="gallery-title">
     <section class="gallery-grid" aria-label="Image gallery">
       {
-        poems.map((poem) => (
+        poems.filter((poem) => poem.image).map((poem) => (
           <a class="gallery-item" href={getPoemPath(poem)}>
             <img src={mediaPath(poem.image)} alt="" loading="lazy" />
             <p>{poem.title}</p>

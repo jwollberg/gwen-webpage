@@ -4,10 +4,8 @@ const poems = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    date: z.string(),
-    summary: z.string(),
     category: z.string(),
-    image: z.string(),
+    image: z.string().optional(),
     music: z.string().optional(),
     tags: z.array(z.string()).optional(),
     featured: z.boolean().optional(),

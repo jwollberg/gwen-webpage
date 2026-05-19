@@ -24,15 +24,14 @@ const Content = poem.Content;
 
 <SiteLayout
   title={`${poem.title} | Gwen`}
-  description={poem.summary}
+  description={`${poem.title} by Gwenevere Ivy Greenwood.`}
   bodyClass="reader-body"
 >
-  <article class="reader" style={`background-image: url('${mediaPath(poem.image)}')`}>
+  <article class="reader" style={poem.image ? `background-image: url('${mediaPath(poem.image)}')` : ""}>
     <div class="reader-shell">
       <header class="reader-title">
-        <p class="meta">{category.title} · {poem.dateLabel}</p>
+        <p class="meta">{category.title}</p>
         <h1>{poem.title}</h1>
-        <p>{poem.summary}</p>
         <div class="reader-nav">
           <a class="button secondary" href={getCategoryPath(category)}>Category</a>
           <a class="button secondary" href={sitePath("/poems/")}>All poems</a>

@@ -28,7 +28,6 @@ const poetryCollections = categories.filter((category) => category.poems.length 
                       <summary>
                         <span>
                           <strong>{poem.title}</strong>
-                          <small>{poem.dateLabel}</small>
                         </span>
                         <span class="summary-mark" aria-hidden="true">
                           <span class="open-label">Open</span>
@@ -36,7 +35,6 @@ const poetryCollections = categories.filter((category) => category.poems.length 
                         </span>
                       </summary>
                       <div class="inline-poem">
-                        <p class="poem-summary">{poem.summary}</p>
                         <div class="poem-body">
                           <Content />
                         </div>
