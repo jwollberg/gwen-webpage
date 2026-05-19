@@ -10,15 +10,14 @@ const poetryCollections = categories.filter((category) => category.poems.length 
 
 <SiteLayout title="Poetry | Gwen" description="Read Gwen's poems in place.">
   <EditablePageIntro settings={poetrySettings} titleId="poetry-title" className="poetry-page">
-    <nav slot="copy-extra" class="category-nav-buttons" aria-label="Poetry categories">
+    <ul slot="copy-extra" class="category-link-list" aria-label="Poetry categories">
       {
         poetryCollections.map((category) => (
-          <a class="category-nav-button" href={getCategoryPath(category)}>
-            <span>{category.title}</span>
-            <small>{category.poems.length} {category.poems.length === 1 ? "poem" : "poems"}</small>
-          </a>
+          <li>
+            <a href={getCategoryPath(category)}>{category.title}</a>
+          </li>
         ))
       }
-    </nav>
+    </ul>
   </EditablePageIntro>
 </SiteLayout>
