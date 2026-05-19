@@ -6,10 +6,10 @@ lightPanelColor: '#f5efe4'
 lightPanelSoftColor: '#ebe0cf'
 mainTextColor: '#fff7eb'
 mutedTextColor: '#d4c5ae'
-lightPanelTextColor: '#2e2921'
-accentColor: '#a3ad7b'
+lightPanelTextColor: '#48a87e'
+accentColor: '#24b272'
 accentMutedColor: '#7c8a5b'
-buttonColor: '#5b1216'
+buttonColor: '#a2060e'
 linkColor: '#c99a4a'
 bodyFont: system-sans
 headingFont: cormorant-garamond
