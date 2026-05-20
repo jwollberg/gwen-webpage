@@ -9,7 +9,7 @@ embeddedImagePosition: right
 textBoxWidth: standard
 textBoxStyle: glass
 label: ''
-heading: poetry collections
+heading: collections
 introText: ''
 bodyText: ''
 ---
