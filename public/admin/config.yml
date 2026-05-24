@@ -21,7 +21,9 @@ collections:
     fields:
       - { label: "Display order", name: "order", widget: "number", required: false, value_type: "int", min: 1, hint: "Lower numbers show first on the published Poetry page. Use 1, 2, 3, and so on." }
       - { label: "Category name", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false, choose_url: false }
+      - { label: "Background image", name: "image", widget: "image", required: false, choose_url: false }
+      - { label: "Background image brightness", name: "imageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
+      - { label: "Text color", name: "textColor", widget: "color", required: false, hint: "Default is white if this is left blank." }
   - name: "site_settings"
     label: "Site Settings"
     files:
@@ -88,6 +90,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -99,6 +102,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false, hint: "Short description for screen readers." }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -147,6 +151,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -158,6 +163,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -202,6 +208,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -213,6 +220,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -257,6 +265,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -268,6 +277,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -302,8 +312,78 @@ collections:
             name: "images"
             widget: "list"
             required: false
+            summary: "{{fields.image}}"
+            hint: "Use the Add button to add as many artwork images as you want."
             fields:
               - { label: "Image", name: "image", widget: "image", choose_url: false }
+              - { label: "Image brightness", name: "brightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
+              - { label: "Image description", name: "alt", widget: "string", required: false }
+      - name: "photography"
+        label: "Photography Page"
+        file: "src/content/settings/photography.md"
+        format: "frontmatter"
+        fields:
+          - label: "Background type"
+            name: "backgroundType"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Use background image", value: "image" }
+              - { label: "Use background color only", value: "color" }
+          - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
+          - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
+          - label: "Background image position"
+            name: "backgroundPosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Center", value: "center" }
+              - { label: "Top", value: "top" }
+              - { label: "Bottom", value: "bottom" }
+              - { label: "Left", value: "left" }
+              - { label: "Right", value: "right" }
+          - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
+          - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
+          - label: "Image position"
+            name: "embeddedImagePosition"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Right of text", value: "right" }
+              - { label: "Left of text", value: "left" }
+              - { label: "Hide image", value: "hidden" }
+          - label: "Text box width"
+            name: "textBoxWidth"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Standard", value: "standard" }
+              - { label: "Narrow", value: "narrow" }
+              - { label: "Wide", value: "wide" }
+          - label: "Text box style"
+            name: "textBoxStyle"
+            widget: "select"
+            required: false
+            options:
+              - { label: "Glass dark", value: "glass" }
+              - { label: "Solid dark", value: "solid" }
+              - { label: "Paper light", value: "paper" }
+              - { label: "No box", value: "simple" }
+          - { label: "Small label", name: "label", widget: "string", required: false }
+          - { label: "Big heading", name: "heading", widget: "string" }
+          - { label: "Text box", name: "introText", widget: "text", required: false }
+          - { label: "Extra text box", name: "bodyText", widget: "text", required: false }
+          - label: "Preview images"
+            name: "images"
+            widget: "list"
+            required: false
+            summary: "{{fields.image}}"
+            hint: "Use the Add button to add as many photography images as you want."
+            fields:
+              - { label: "Image", name: "image", widget: "image", choose_url: false }
+              - { label: "Image brightness", name: "brightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
               - { label: "Image description", name: "alt", widget: "string", required: false }
       - name: "gallery"
         label: "Gallery Page"
@@ -319,6 +399,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -330,6 +411,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -374,6 +456,7 @@ collections:
               - { label: "Use background color only", value: "color" }
           - { label: "Background color", name: "backgroundColor", widget: "color", required: false }
           - { label: "Background image", name: "backgroundImage", widget: "image", required: false, choose_url: false }
+          - { label: "Background image brightness", name: "backgroundBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - label: "Background image position"
             name: "backgroundPosition"
             widget: "select"
@@ -385,6 +468,7 @@ collections:
               - { label: "Left", value: "left" }
               - { label: "Right", value: "right" }
           - { label: "Image beside text", name: "embeddedImage", widget: "image", required: false, choose_url: false }
+          - { label: "Image beside text brightness", name: "embeddedImageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
           - { label: "Image description", name: "embeddedImageAlt", widget: "string", required: false }
           - label: "Image position"
             name: "embeddedImagePosition"
@@ -436,6 +520,8 @@ collections:
         value_field: "{{slug}}"
         display_fields: ["title"]
       - { label: "Background image", name: "image", widget: "image", required: false, choose_url: false }
+      - { label: "Background image brightness", name: "imageBrightness", widget: "number", required: false, default: 100, value_type: "int", min: 20, max: 160, step: 5, after_input: "%", hint: "100 is normal. Lower makes the image darker; higher makes it brighter." }
+      - { label: "Poem text color", name: "textColor", widget: "color", required: false, hint: "Default is white if this is left blank." }
       - { label: "Music", name: "music", widget: "file", required: false, choose_url: false }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "Poem", name: "body", widget: "markdown" }

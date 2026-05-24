@@ -5,17 +5,21 @@ import { brightnessPercent } from "../../lib/images";
 import { mediaPath } from "../../lib/paths";
 import { getPageSettings } from "../../lib/settings";
 
-const artworkSettings = await getPageSettings("artwork");
+const photographySettings = await getPageSettings("photography");
 ---
 
 <SiteLayout
-  title="Artwork | Gwen"
-  description="A developing visual archive for Gwen's photography, drawings, and mixed media artwork."
+  title="Photography | Gwen"
+  description="A developing photography archive by Gwenevere Ivy Greenwood."
 >
-  <EditablePageIntro settings={artworkSettings} titleId="artwork-title" className="artwork-page">
-    <div class="artwork-strip" aria-label="Artwork preview images">
+  <EditablePageIntro
+    settings={photographySettings}
+    titleId="photography-title"
+    className="artwork-page photography-page"
+  >
+    <div class="artwork-strip" aria-label="Photography preview images">
       {
-        artworkSettings.images.map((item) => (
+        photographySettings.images.map((item) => (
           <figure style={`--image-brightness: ${brightnessPercent(item.brightness)}`}>
             <img src={mediaPath(item.image)} alt={item.alt} loading="lazy" />
           </figure>

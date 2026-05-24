@@ -13,6 +13,8 @@ export type PoemFrontmatter = {
   title: string;
   category: string;
   image?: string;
+  imageBrightness?: number;
+  textColor?: string;
   music?: string;
   tags?: string[];
 };
@@ -25,6 +27,8 @@ export type Poem = PoemFrontmatter & {
 export type CategoryFrontmatter = {
   title: string;
   image?: string;
+  imageBrightness?: number;
+  textColor?: string;
   order?: number | null;
 };
 

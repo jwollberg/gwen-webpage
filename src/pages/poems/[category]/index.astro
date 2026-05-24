@@ -5,6 +5,7 @@ import {
   getPoemPath,
   getPoemsByCategory,
 } from "../../../lib/poems";
+import { brightnessPercent, textColorValue } from "../../../lib/images";
 import { mediaPath } from "../../../lib/paths";
 
 export function getStaticPaths() {
@@ -16,37 +17,50 @@ export function getStaticPaths() {
 
 const { category } = Astro.props;
 const categoryPoems = getPoemsByCategory(category.slug);
+const categoryStyle = [
+  `--category-image: ${category.image ? `url('${mediaPath(category.image)}')` : "none"}`,
+  `--category-bg-brightness: ${brightnessPercent(category.imageBrightness)}`,
+  `--category-text-color: ${textColorValue(category.textColor)}`,
+].join("; ");
 ---
 
 <SiteLayout
   title={`${category.title} Poems | Gwen`}
   description={`${category.title} poems by Gwenevere Ivy Greenwood.`}
 >
-  <section
-    class="page-hero category-hero"
-    style={category.image ? `background-image: url('${mediaPath(category.image)}')` : ""}
-  >
-    <h1>{category.title}</h1>
-  </section>
-  <section class="section dark" aria-label={`${category.title} poems`}>
-    <div class="poem-grid">
-    {
-      categoryPoems.map((poem) => (
-        <a class:list={["poem-card", !poem.image && "poem-card-no-image"]} href={getPoemPath(poem)}>
-          {poem.image && <img src={mediaPath(poem.image)} alt="" loading="lazy" />}
-          <div>
-            <h3>{poem.title}</h3>
-            {poem.tags && (
-              <div class="tags" aria-label="Tags">
-                {poem.tags.map((tag) => (
-                  <span>{tag}</span>
-                ))}
-              </div>
-            )}
-          </div>
-        </a>
-      ))
-    }
-    </div>
-  </section>
+  <div class="category-page" style={categoryStyle}>
+    <section class="page-hero category-hero">
+      <h1>{category.title}</h1>
+    </section>
+    <section class="section dark category-poems-section" aria-label={`${category.title} poems`}>
+      <div class="poem-grid">
+      {
+        categoryPoems.map((poem) => (
+          <a class:list={["poem-card", !poem.image && "poem-card-no-image"]} href={getPoemPath(poem)}>
+            {
+              poem.image && (
+                <img
+                  src={mediaPath(poem.image)}
+                  alt=""
+                  loading="lazy"
+                  style={`--image-brightness: ${brightnessPercent(poem.imageBrightness)}`}
+                />
+              )
+            }
+            <div>
+              <h3>{poem.title}</h3>
+              {poem.tags && (
+                <div class="tags" aria-label="Tags">
+                  {poem.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))
+      }
+      </div>
+    </section>
+  </div>
 </SiteLayout>

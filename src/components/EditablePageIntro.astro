@@ -28,7 +28,9 @@ const style = [
   `--page-image: ${pageImage}`,
   `--page-bg: ${settings.backgroundColor}`,
   `--page-bg-position: ${settings.backgroundPosition}`,
+  `--page-bg-brightness: ${settings.backgroundBrightness}%`,
 ].join("; ");
+const embeddedImageStyle = `--image-brightness: ${settings.embeddedImageBrightness}%`;
 ---
 
 <section class={classes} style={style}>
@@ -36,7 +38,7 @@ const style = [
     <section class="editable-page-panel" aria-labelledby={titleId}>
       {
         imageFirst && (
-          <figure class="embedded-frame">
+          <figure class="embedded-frame" style={embeddedImageStyle}>
             <img src={mediaPath(settings.embeddedImage)} alt={settings.embeddedImageAlt} />
           </figure>
         )
@@ -70,7 +72,7 @@ const style = [
 
       {
         imageLast && (
-          <figure class="embedded-frame">
+          <figure class="embedded-frame" style={embeddedImageStyle}>
             <img src={mediaPath(settings.embeddedImage)} alt={settings.embeddedImageAlt} />
           </figure>
         )

@@ -55,10 +55,95 @@
           }
         }
 
-        const observer = new MutationObserver(updateLoginScreen);
+        function getInputLabelText(input) {
+          const directLabels = Array.from(input.labels ?? [])
+            .map((label) => label.textContent ?? "")
+            .join(" ");
+          const nearbyLabel = input.closest("label")?.textContent ?? "";
+          const ariaLabel = input.getAttribute("aria-label") ?? "";
+
+          return [input.name, input.id, ariaLabel, directLabels, nearbyLabel].join(" ");
+        }
+
+        function findBrightnessPreviewImages(input) {
+          const scopes = [];
+          let current = input.parentElement;
+
+          for (let i = 0; current && i < 7; i += 1) {
+            scopes.push(current);
+            current = current.parentElement;
+          }
+
+          for (const scope of scopes) {
+            const images = Array.from(scope.querySelectorAll("img")).filter(
+              (image) => !image.closest("header, nav"),
+            );
+
+            if (images.length > 0) {
+              return images.slice(0, 4);
+            }
+          }
+
+          return [];
+        }
+
+        function enhanceBrightnessControls() {
+          const inputs = Array.from(document.querySelectorAll("input"));
+
+          for (const input of inputs) {
+            const labelText = getInputLabelText(input);
+
+            if (!/brightness/i.test(labelText) || input.dataset.brightnessEnhanced === "true") {
+              continue;
+            }
+
+            input.dataset.brightnessEnhanced = "true";
+            input.type = "range";
+            input.min = input.min || "20";
+            input.max = input.max || "160";
+            input.step = input.step || "5";
+
+            if (!input.value) {
+              input.value = "100";
+            }
+
+            input.style.accentColor = "#a3ad7b";
+
+            const valueLabel = document.createElement("span");
+            valueLabel.setAttribute("aria-live", "polite");
+            valueLabel.style.display = "inline-block";
+            valueLabel.style.marginLeft = "0.75rem";
+            valueLabel.style.minWidth = "3.25rem";
+            valueLabel.style.color = "#334155";
+            valueLabel.style.fontSize = "0.9rem";
+
+            input.insertAdjacentElement("afterend", valueLabel);
+
+            const update = () => {
+              const numericValue = Number.parseInt(input.value || "100", 10);
+              const brightness = Math.min(160, Math.max(20, Number.isFinite(numericValue) ? numericValue : 100));
+              valueLabel.textContent = `${brightness}%`;
+
+              for (const image of findBrightnessPreviewImages(input)) {
+                image.style.filter = `brightness(${brightness}%)`;
+              }
+            };
+
+            input.addEventListener("input", update);
+            input.addEventListener("change", update);
+            update();
+          }
+        }
+
+        function updateAdminScreen() {
+          updateLoginScreen();
+          enhanceBrightnessControls();
+        }
+
+        const observer = new MutationObserver(updateAdminScreen);
         observer.observe(document.documentElement, { childList: true, subtree: true });
-        window.addEventListener("load", updateLoginScreen);
-        updateLoginScreen();
+        window.addEventListener("load", updateAdminScreen);
+        updateAdminScreen();
       })();
     </script>
   </body>

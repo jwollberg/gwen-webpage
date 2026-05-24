@@ -1,6 +1,7 @@
 ---
 import EditablePageIntro from "../../components/EditablePageIntro.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { brightnessPercent } from "../../lib/images";
 import { getPoemPath, poems } from "../../lib/poems";
 import { mediaPath } from "../../lib/paths";
 import { getPageSettings } from "../../lib/settings";
@@ -14,7 +15,12 @@ const gallerySettings = await getPageSettings("gallery");
       {
         poems.filter((poem) => poem.image).map((poem) => (
           <a class="gallery-item" href={getPoemPath(poem)}>
-            <img src={mediaPath(poem.image)} alt="" loading="lazy" />
+            <img
+              src={mediaPath(poem.image)}
+              alt=""
+              loading="lazy"
+              style={`--image-brightness: ${brightnessPercent(poem.imageBrightness)}`}
+            />
             <p>{poem.title}</p>
           </a>
         ))

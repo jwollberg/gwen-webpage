@@ -6,6 +6,8 @@ const poems = defineCollection({
     title: z.string(),
     category: z.string(),
     image: z.string().optional(),
+    imageBrightness: z.number().optional(),
+    textColor: z.string().optional(),
     music: z.string().optional(),
     tags: z.array(z.string()).optional(),
   }),
@@ -16,6 +18,8 @@ const categories = defineCollection({
   schema: z.object({
     title: z.string(),
     image: z.string().optional(),
+    imageBrightness: z.number().optional(),
+    textColor: z.string().optional(),
     order: z.number().nullable().optional(),
   }),
 });
@@ -25,11 +29,13 @@ const settings = defineCollection({
   schema: z.object({
     homeImage: z.string().optional(),
     backgroundImage: z.string().optional(),
+    backgroundBrightness: z.number().optional(),
     backgroundType: z.string().optional(),
     backgroundColor: z.string().optional(),
     backgroundPosition: z.string().optional(),
     embeddedImage: z.string().optional(),
     embeddedImageAlt: z.string().optional(),
+    embeddedImageBrightness: z.number().optional(),
     embeddedImagePosition: z.string().optional(),
     textBoxWidth: z.string().optional(),
     textBoxStyle: z.string().optional(),
@@ -48,6 +54,7 @@ const settings = defineCollection({
         z.object({
           image: z.string().optional(),
           alt: z.string().optional(),
+          brightness: z.number().optional(),
         }),
       )
       .optional(),

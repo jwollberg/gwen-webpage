@@ -6,6 +6,7 @@ import {
   getCategoryPath,
   getPoemPath,
 } from "../../../lib/poems";
+import { brightnessPercent, textColorValue } from "../../../lib/images";
 import { mediaPath, sitePath } from "../../../lib/paths";
 
 export function getStaticPaths() {
@@ -20,6 +21,11 @@ export function getStaticPaths() {
 const { category, poem } = Astro.props;
 const { previous, next } = getAdjacentPoems(poem.slug, category.slug);
 const Content = poem.Content;
+const readerStyle = [
+  `--reader-image: ${poem.image ? `url('${mediaPath(poem.image)}')` : "none"}`,
+  `--reader-bg-brightness: ${brightnessPercent(poem.imageBrightness)}`,
+  `--reader-text-color: ${textColorValue(poem.textColor)}`,
+].join("; ");
 ---
 
 <SiteLayout
@@ -27,7 +33,7 @@ const Content = poem.Content;
   description={`${poem.title} by Gwenevere Ivy Greenwood.`}
   bodyClass="reader-body"
 >
-  <article class="reader" style={poem.image ? `background-image: url('${mediaPath(poem.image)}')` : ""}>
+  <article class="reader" style={readerStyle}>
     <div class="reader-shell">
       <header class="reader-title">
         <p class="meta">{category.title}</p>

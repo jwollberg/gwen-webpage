@@ -8,21 +8,25 @@ export type PageId =
   | "poetry"
   | "short-stories"
   | "artwork"
+  | "photography"
   | "gallery"
   | "publisher";
 
 type ImageItem = {
   image: string;
   alt: string;
+  brightness: number;
 };
 
 export type PageSettings = {
   backgroundType: string;
   backgroundImage: string;
+  backgroundBrightness: number;
   backgroundColor: string;
   backgroundPosition: string;
   embeddedImage: string;
   embeddedImageAlt: string;
+  embeddedImageBrightness: number;
   embeddedImagePosition: string;
   textBoxWidth: string;
   textBoxStyle: string;
@@ -50,10 +54,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   home: {
     backgroundType: "image",
     backgroundImage: "/media/images/writing-desk-hero.png",
+    backgroundBrightness: 100,
     backgroundColor: "#07110f",
     backgroundPosition: "center",
     embeddedImage: "/media/images/still-life-roses.png",
     embeddedImageAlt: "A still-life photograph from Gwen's visual archive",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "right",
     textBoxWidth: "wide",
     textBoxStyle: "glass",
@@ -76,10 +82,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   poetry: {
     backgroundType: "image",
     backgroundImage: "/media/images/rain-window.png",
+    backgroundBrightness: 100,
     backgroundColor: "#07110f",
     backgroundPosition: "center",
     embeddedImage: "/media/images/shoreline-notebook.png",
     embeddedImageAlt: "A notebook near the shoreline",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "right",
     textBoxWidth: "standard",
     textBoxStyle: "glass",
@@ -101,10 +109,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   "short-stories": {
     backgroundType: "image",
     backgroundImage: "/media/images/shoreline-notebook.png",
+    backgroundBrightness: 100,
     backgroundColor: "#07110f",
     backgroundPosition: "center",
     embeddedImage: "/media/images/rain-window.png",
     embeddedImageAlt: "Rain on a window",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "left",
     textBoxWidth: "standard",
     textBoxStyle: "glass",
@@ -126,10 +136,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   artwork: {
     backgroundType: "image",
     backgroundImage: "/media/images/still-life-roses.png",
+    backgroundBrightness: 100,
     backgroundColor: "#07110f",
     backgroundPosition: "center",
     embeddedImage: "/media/images/writing-desk-hero.png",
     embeddedImageAlt: "A writing desk",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "right",
     textBoxWidth: "standard",
     textBoxStyle: "glass",
@@ -143,9 +155,39 @@ const pageDefaults: Record<PageId, PageSettings> = {
     secondaryButtonLabel: "",
     secondaryButtonUrl: "",
     images: [
-      { image: "/media/images/rain-window.png", alt: "" },
-      { image: "/media/images/shoreline-notebook.png", alt: "" },
-      { image: "/media/images/writing-desk-hero.png", alt: "" },
+      { image: "/media/images/rain-window.png", alt: "", brightness: 100 },
+      { image: "/media/images/shoreline-notebook.png", alt: "", brightness: 100 },
+      { image: "/media/images/writing-desk-hero.png", alt: "", brightness: 100 },
+    ],
+    websiteEditorText: "",
+    foldersText: "",
+    templateIntro: "",
+    publishFlowIntro: "",
+  },
+  photography: {
+    backgroundType: "image",
+    backgroundImage: "/media/04.20.2023_162525.JPG",
+    backgroundBrightness: 100,
+    backgroundColor: "#07110f",
+    backgroundPosition: "center",
+    embeddedImage: "/media/03.31.2013_005.jpg",
+    embeddedImageAlt: "A photograph from Gwen's visual archive",
+    embeddedImageBrightness: 100,
+    embeddedImagePosition: "right",
+    textBoxWidth: "standard",
+    textBoxStyle: "glass",
+    label: "Photography",
+    heading: "A photography archive in progress.",
+    introText:
+      "This page gathers photography separately from artwork so each visual collection can grow at its own pace.",
+    bodyText: "",
+    primaryButtonLabel: "",
+    primaryButtonUrl: "",
+    secondaryButtonLabel: "",
+    secondaryButtonUrl: "",
+    images: [
+      { image: "/media/04.16.2015_18214068_001.JPG", alt: "", brightness: 100 },
+      { image: "/media/04.16.2015_18165594_001.JPG", alt: "", brightness: 100 },
     ],
     websiteEditorText: "",
     foldersText: "",
@@ -155,10 +197,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   gallery: {
     backgroundType: "color",
     backgroundImage: "",
+    backgroundBrightness: 100,
     backgroundColor: "#182a24",
     backgroundPosition: "center",
     embeddedImage: "/media/images/rain-window.png",
     embeddedImageAlt: "Rain on a window",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "right",
     textBoxWidth: "standard",
     textBoxStyle: "solid",
@@ -179,10 +223,12 @@ const pageDefaults: Record<PageId, PageSettings> = {
   publisher: {
     backgroundType: "color",
     backgroundImage: "",
+    backgroundBrightness: 100,
     backgroundColor: "#f5efe4",
     backgroundPosition: "center",
     embeddedImage: "/media/images/writing-desk-hero.png",
     embeddedImageAlt: "A writing desk",
+    embeddedImageBrightness: 100,
     embeddedImagePosition: "right",
     textBoxWidth: "standard",
     textBoxStyle: "paper",
@@ -263,6 +309,14 @@ function colorValue(value: unknown, fallback: string): string {
   return fallback;
 }
 
+function brightnessValue(value: unknown, fallback: number): number {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return Math.min(160, Math.max(20, Math.round(value)));
+  }
+
+  return fallback;
+}
+
 function fontValue(value: unknown, fallbackKey: string): string {
   if (hasText(value) && value in fontStacks) {
     return fontStacks[value];
@@ -289,6 +343,7 @@ function imageListValue(images: SettingsData["images"], fallback: ImageItem[]): 
     .map((item) => ({
       image: item.image ?? "",
       alt: item.alt ?? "",
+      brightness: brightnessValue(item.brightness, 100),
     }));
 
   return cleanImages.length > 0 ? cleanImages : fallback;
@@ -311,6 +366,7 @@ export async function getPageSettings(pageId: PageId): Promise<PageSettings> {
   return {
     backgroundType: optionValue(data.backgroundType, ["image", "color"], fallback.backgroundType),
     backgroundImage: textValue(data, "backgroundImage", homeImageFallback),
+    backgroundBrightness: brightnessValue(data.backgroundBrightness, fallback.backgroundBrightness),
     backgroundColor: colorValue(data.backgroundColor, fallback.backgroundColor),
     backgroundPosition: optionValue(
       data.backgroundPosition,
@@ -319,6 +375,10 @@ export async function getPageSettings(pageId: PageId): Promise<PageSettings> {
     ),
     embeddedImage: textValue(data, "embeddedImage", embeddedImageFallback),
     embeddedImageAlt: textValue(data, "embeddedImageAlt", embeddedImageAltFallback),
+    embeddedImageBrightness: brightnessValue(
+      data.embeddedImageBrightness,
+      fallback.embeddedImageBrightness,
+    ),
     embeddedImagePosition: optionValue(
       data.embeddedImagePosition,
       ["right", "left", "hidden"],
