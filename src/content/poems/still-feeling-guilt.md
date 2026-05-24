@@ -1,7 +1,9 @@
 ---
 title: still feeling guilt
 category: hourglass-memories
-image: ''
+image: /media/508 5.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
@@ -23,7 +25,7 @@ i long to reunite
 my friend; my enemy
 
 wherever that may be
- 
+
 one day…
 
 maybe some day soon
