@@ -1,11 +1,13 @@
 ---
 title: i am not alone
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/dp 27.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 take my hand
