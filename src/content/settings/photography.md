@@ -1,12 +1,12 @@
 ---
-backgroundType: image
+backgroundType: color
 backgroundColor: '#07110f'
 backgroundImage: /media/04.20.2023_162525.JPG
 backgroundBrightness: 100
 backgroundPosition: center
 embeddedImage: /media/03.31.2013_005.jpg
-embeddedImageAlt: ''
 embeddedImageBrightness: 100
+embeddedImageAlt: ''
 embeddedImagePosition: hidden
 textBoxWidth: standard
 textBoxStyle: glass
