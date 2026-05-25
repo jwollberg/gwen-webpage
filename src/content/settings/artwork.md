@@ -1,5 +1,5 @@
 ---
-backgroundType: image
+backgroundType: color
 backgroundColor: '#07110f'
 backgroundImage: /media/04.20.2023_162525.JPG
 backgroundBrightness: null
