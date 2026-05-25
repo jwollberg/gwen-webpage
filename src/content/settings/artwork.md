@@ -2,9 +2,11 @@
 backgroundType: image
 backgroundColor: '#07110f'
 backgroundImage: /media/04.20.2023_162525.JPG
+backgroundBrightness: null
 backgroundPosition: center
-embeddedImage: /media/02.26.2021_17394474.jpg
-embeddedImageAlt: ''
+embeddedImage: /media/_2 copies_.jpg
+embeddedImageBrightness: null
+embeddedImageAlt: she loves me not
 embeddedImagePosition: right
 textBoxWidth: standard
 textBoxStyle: glass
@@ -13,10 +15,13 @@ heading: Artwork
 introText: ''
 bodyText: ''
 images:
-  - image: /media/04.16.2015_18214068_001.JPG
+  - image: /media/Untitled 3.jpg
+    brightness: null
     alt: ''
   - image: /media/04.16.2015_18165594_001.JPG
+    brightness: null
     alt: ''
-  - image: /media/04.16.2015_18145076_001.JPG
-    alt: ''
+  - image: /media/A3 ghost notes.jpg
+    brightness: null
+    alt: ghost notes
 ---
