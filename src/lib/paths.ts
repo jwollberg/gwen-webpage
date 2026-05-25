@@ -15,7 +15,7 @@ export function sitePath(path: string): string {
   return `${cleanBase}${cleanPath}`;
 }
 
-export function mediaPath(path?: string): string {
+export function mediaPath(path?: string | null): string {
   if (!path) {
     return "";
   }

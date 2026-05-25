@@ -12,10 +12,10 @@ type CategoryModule = {
 export type PoemFrontmatter = {
   title: string;
   category: string;
-  image?: string;
-  imageBrightness?: number;
-  textColor?: string;
-  music?: string;
+  image?: string | null;
+  imageBrightness?: number | null;
+  textColor?: string | null;
+  music?: string | null;
   tags?: string[];
 };
 
@@ -26,9 +26,9 @@ export type Poem = PoemFrontmatter & {
 
 export type CategoryFrontmatter = {
   title: string;
-  image?: string;
-  imageBrightness?: number;
-  textColor?: string;
+  image?: string | null;
+  imageBrightness?: number | null;
+  textColor?: string | null;
   order?: number | null;
 };
 
