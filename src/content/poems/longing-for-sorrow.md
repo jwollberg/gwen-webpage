@@ -1,11 +1,13 @@
 ---
 title: longing for sorrow
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/10 best.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 somewhere
