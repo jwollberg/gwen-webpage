@@ -21,7 +21,7 @@ images:
   - image: /media/04.16.2015_18165594_001.JPG
     brightness: null
     alt: ''
-  - image: /media/A3 ghost notes.jpg
+  - image: /media/_2 copies.jpg
     brightness: null
-    alt: ghost notes
+    alt: ''
 ---
