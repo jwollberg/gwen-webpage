@@ -2,7 +2,7 @@
 backgroundType: image
 backgroundColor: '#07110f'
 backgroundImage: /media/4x6 5.JPG
-backgroundBrightness: null
+backgroundBrightness: 100
 backgroundPosition: center
 embeddedImage: ''
 embeddedImageBrightness: null
