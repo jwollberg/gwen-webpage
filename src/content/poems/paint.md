@@ -1,7 +1,9 @@
 ---
 title: paint
 category: hourglass-memories
-image: ''
+image: /media/dp 17.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
