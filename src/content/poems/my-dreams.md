@@ -1,7 +1,9 @@
 ---
 title: my dreams
 category: dream-catcher
-image: ''
+image: /media/A24 reflecting sunset.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
