@@ -3,7 +3,7 @@ title: my dreams
 category: dream-catcher
 image: /media/A24 reflecting sunset.jpg
 imageBrightness: null
-textColor: ''
+textColor: '#9bd4f8'
 music: ''
 tags: []
 ---
