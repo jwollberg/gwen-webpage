@@ -1,11 +1,13 @@
 ---
 title: butterfly
 category: dream-catcher
-image: ''
+image: /media/5x7 3.jpg
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 fly away...catch your dreams...
