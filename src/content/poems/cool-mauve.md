@@ -3,7 +3,7 @@ title: cool mauve
 category: dream-catcher
 image: /media/A8 genesis.jpg
 imageBrightness: null
-textColor: '#faf9f9'
+textColor: '#b77695'
 music: ''
 tags: []
 draft: false
