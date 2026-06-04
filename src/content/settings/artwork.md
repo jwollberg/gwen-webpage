@@ -20,7 +20,7 @@ images:
     alt: ''
   - image: /media/A9 earth_s conception.jpg
     brightness: null
-    alt: ''
+    alt: Earth's Conception
   - image: /media/_2 copies.jpg
     brightness: null
     alt: ''
@@ -29,10 +29,10 @@ images:
     alt: In the Arms of Forrest
   - image: /media/A14 global warming.jpg
     brightness: 100
-    alt: ''
+    alt: Global Warming
   - image: /media/A2 oblivion.jpg
     brightness: 100
-    alt: ''
+    alt: Oblivion
   - image: /media/A8 genesis.jpg
     brightness: 100
     alt: ''
