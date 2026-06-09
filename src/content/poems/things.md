@@ -1,7 +1,9 @@
 ---
 title: things
 category: hourglass-memories
-image: ''
+image: /media/IMG_E7926.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
 ---
