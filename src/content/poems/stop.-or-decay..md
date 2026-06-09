@@ -1,7 +1,9 @@
 ---
 title: stop. or decay.
 category: hourglass-memories
-image: ''
+image: /media/IMG_E8032.JPG
+imageBrightness: null
+textColor: '#55401b'
 music: ''
 tags: []
 ---
