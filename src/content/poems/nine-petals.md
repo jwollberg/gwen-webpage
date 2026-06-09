@@ -1,9 +1,9 @@
 ---
 title: nine petals
 category: smeared-clouds-splintered-teardrops
-image: /media/tree 5.JPG
+image: /media/IMG_8107.JPG
 imageBrightness: null
-textColor: ''
+textColor: '#fdfaff'
 music: ''
 tags: []
 draft: false
