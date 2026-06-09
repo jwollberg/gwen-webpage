@@ -8,18 +8,18 @@ music: ''
 tags: []
 ---
 
-looking glasses,
+looking glasses
 
-witchcraft, 
+witchcraft
 
-hourglasses, 
+hourglasses 
 
-black kats, 
+black kats 
 
-broomsticks, 
+broomsticks
 
-steppingstones, 
+steppingstones
 
-burned down candles, 
+burned down candles
 
 broken bones
