@@ -2,10 +2,12 @@
 title: spiderweb
 category: hourglass-memories
 image: ''
-music: ''
+imageBrightness: null
+textColor: '#ffffff'
+music: /media/IMG_E8024.JPG
 tags: []
-featured: false
 draft: false
+featured: false
 ---
 
 scatter the ashes of you burning love
