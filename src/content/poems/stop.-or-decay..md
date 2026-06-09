@@ -3,7 +3,7 @@ title: stop. or decay.
 category: hourglass-memories
 image: /media/IMG_E8032.JPG
 imageBrightness: null
-textColor: '#2c1d02'
+textColor: '#ffffff'
 music: ''
 tags: []
 ---
