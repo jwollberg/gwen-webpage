@@ -1,7 +1,9 @@
 ---
 title: does life exist
 category: smeared-clouds-splintered-teardrops
-image: ''
+image: /media/IMG_7654.JPG
+imageBrightness: null
+textColor: '#f7f3f3'
 music: ''
 tags: []
 ---
