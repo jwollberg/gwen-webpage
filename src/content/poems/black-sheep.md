@@ -1,11 +1,13 @@
 ---
 title: black sheep
 category: hourglass-memories
-image: ''
+image: /media/05.30.2021_19433804.JPG
+imageBrightness: null
+textColor: ''
 music: ''
 tags: []
-featured: true
 draft: false
+featured: true
 ---
 
 i’m getting tired of 
