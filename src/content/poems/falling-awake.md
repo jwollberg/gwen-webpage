@@ -1,7 +1,9 @@
 ---
 title: falling awake
 category: hourglass-memories
-image: ''
+image: /media/10.14.2017_16504592.JPG
+imageBrightness: null
+textColor: '#f5f5f5'
 music: ''
 tags: []
 ---
