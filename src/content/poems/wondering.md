@@ -1,7 +1,9 @@
 ---
 title: wondering
 category: world-of-no-peace
-image: ''
+image: /media/smeared clouds 7.JPG
+imageBrightness: null
+textColor: '#f7f7f7'
 music: ''
 tags: []
 ---
