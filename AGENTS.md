@@ -23,6 +23,17 @@ https://gweneveregreenwood.com/
 All content is edited directly in the code (Markdown files and Astro pages).
 There is no web admin / CMS.
 
+## Repository Access
+
+This computer's Git/`gh` is signed in as GitHub user **jwollberg**, who is a
+**collaborator with write access** to `gwengreenwood/gwen-webpage`. Normal
+`git push` to `main` works directly — no personal access token needed.
+
+One caveat: pushing changes under `.github/workflows/` needs the credential to
+include the **workflow** scope. If a push is rejected with a "workflow scope"
+message, push the non-workflow files and edit the workflow file on github.com,
+or use a token that has the workflow scope.
+
 ## After Every Code Or Content Edit
 
 After changing the website, push it all the way through to GitHub unless the user
