@@ -6,6 +6,5 @@ music: ''
 tags: []
 ---
 
-pull the disguise over my face, so 
-
+pull the disguise over my face, so
 i can look like all the other blind robots in the world

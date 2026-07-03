@@ -2,10 +2,11 @@
 
 Talk to me like I'm an amateur. Do not assume I understand code terms.
 
-This project is the Gwen poetry website in:
+This project is the Gwen poetry website. It lives in the shared "Websites"
+workspace (see the master guide at `..\CLAUDE.md`) at:
 
 ```text
-C:\Users\joshw\Projects\Gwen Webpage
+C:\Users\joshw\Projects\Websites\Website-Gwenevere Greenwood
 ```
 
 The GitHub repository is:

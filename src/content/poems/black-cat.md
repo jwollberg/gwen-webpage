@@ -1,5 +1,5 @@
 ---
-title: black cat
+title: black kat
 category: hourglass-memories
 image: /media/IMG_E7848.JPG
 imageBrightness: null

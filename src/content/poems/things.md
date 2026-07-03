@@ -9,17 +9,10 @@ tags: []
 ---
 
 looking glasses
-
 witchcraft
-
-hourglasses 
-
-black kats 
-
+hourglasses
+black kats
 broomsticks
-
 steppingstones
-
 burned down candles
-
 broken bones

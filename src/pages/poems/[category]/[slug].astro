@@ -1,12 +1,7 @@
 ---
 import SiteLayout from "../../../layouts/SiteLayout.astro";
-import {
-  categories,
-  getAdjacentPoems,
-  getCategoryPath,
-  getPoemPath,
-} from "../../../lib/poems";
-import { mediaPath, sitePath } from "../../../lib/paths";
+import { categories, getAdjacentPoems, getPoemPath } from "../../../lib/poems";
+import { mediaPath } from "../../../lib/paths";
 
 export function getStaticPaths() {
   return categories.flatMap((category) =>
@@ -32,13 +27,15 @@ const Content = poem.Content;
       <header class="reader-title">
         <p class="meta">{category.title}</p>
         <h1>{poem.title}</h1>
-        <div class="reader-nav">
-          <a class="button secondary" href={getCategoryPath(category)}>Collection</a>
-          <a class="button secondary" href={sitePath("/poems/")}>All poems</a>
-          {previous && <a class="button secondary" href={getPoemPath(previous)}>Previous</a>}
-          {next && <a class="button secondary" href={getPoemPath(next)}>Next</a>}
-        </div>
       </header>
+
+      {
+        poem.image && (
+          <figure class="reader-photo">
+            <img src={mediaPath(poem.image)} alt="" />
+          </figure>
+        )
+      }
 
       <div class="reader-panel" aria-label={`${poem.title} poem text`}>
         <div class="reader-panel-inner poem-body">
@@ -54,6 +51,27 @@ const Content = poem.Content;
           )
         }
       </div>
+
+      {
+        (previous || next) && (
+          <nav class="reader-pager" aria-label="More poems">
+            <div>
+              {previous && (
+                <a class="button secondary" href={getPoemPath(previous)}>
+                  ← Previous
+                </a>
+              )}
+            </div>
+            <div>
+              {next && (
+                <a class="button secondary" href={getPoemPath(next)}>
+                  Next →
+                </a>
+              )}
+            </div>
+          </nav>
+        )
+      }
     </div>
   </article>
 </SiteLayout>

@@ -1,10 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { categories, getCategoryPath } from "../lib/poems";
 import { sitePath } from "../lib/paths";
-
-const collections = categories.filter((category) => category.poems.length > 0);
-const pad = (index: number) => String(index + 1).padStart(2, "0");
 ---
 
 <SiteLayout
@@ -12,53 +8,46 @@ const pad = (index: number) => String(index + 1).padStart(2, "0");
   description="The personal poetry, short fiction, and artwork website of Gwenevere Ivy Greenwood."
   bodyClass="home-body"
 >
-  <section class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">Poetry · Short fiction · Visual work</p>
-      <h1>Dark poetry &amp; literature</h1>
-      <p class="lede">
-        Gwenevere Ivy Greenwood is an American writer and artist creating poems,
-        short fiction, and visual work shaped by nature, tragedy, grief, and
-        depression. She has autism and wants to spread awareness through her work.
+  <section
+    class="mx-auto grid max-w-[82rem] grid-cols-[1.15fr_0.85fr] items-center gap-[clamp(2rem,5vw,5rem)] px-[var(--edge)] pt-[clamp(3.5rem,8vw,7rem)] pb-[clamp(3rem,6vw,5.5rem)] max-[900px]:grid-cols-1 max-[900px]:gap-8"
+  >
+    <div>
+      <p class="mb-[1.4rem] font-sans text-[0.8rem] uppercase tracking-[0.16em] text-accent">
+        Poetry · Short fiction · Visual work
       </p>
-      <div class="actions">
-        <a class="btn" href={sitePath("/poems/")}>Read poetry</a>
-        <a class="btn-text" href={sitePath("/short-stories/")}>Short stories&nbsp;→</a>
-      </div>
-      <p class="note">
-        <span>Content warning</span>
+      <h1
+        class="m-0 font-display text-[clamp(2.8rem,6.5vw,5rem)] font-normal leading-[1.02] tracking-[-0.015em]"
+      >
+        Dark poetry &amp; literature
+      </h1>
+      <p class="mt-7 max-w-[34rem] text-[1.08rem] leading-[1.75] text-ink-soft">
+        Gwenevere Ivy Greenwood is an American writer of dark poetry and literary
+        fiction. Deeply inspired by the natural world, her work blends symbolism,
+        psychological depth, and atmospheric storytelling to explore grief, memory,
+        trauma, healing, and the quiet resilience of the human spirit. Through
+        recurring images drawn from nature, dreams, and myth, she seeks beauty and
+        meaning within darkness.
+      </p>
+      <p
+        class="mt-12 block max-w-[32rem] border-l-2 border-line pl-4 text-[0.82rem] leading-[1.6] text-ink-soft"
+      >
+        <span
+          class="mb-[0.35rem] block text-[0.72rem] uppercase tracking-[0.12em] text-accent"
+          >Content warning</span
+        >
         This website contains fictional works and poetry that explore dark and
         potentially disturbing themes, including suicidal ideation, self-harm,
         grief, and death. Some readers may find the material distressing or
         offensive.
       </p>
     </div>
-    <figure class="hero-img">
-      <img src={sitePath("/media/03.31.2013_005.jpg")} alt="A sunlit red door" />
+    <figure class="m-0 overflow-hidden rounded-[3px] max-[900px]:order-[-1]">
+      <img
+        class="h-auto w-full"
+        src={sitePath("/media/03.31.2013_005.jpg")}
+        alt="A sunlit red door"
+      />
     </figure>
   </section>
 
-  {
-    collections.length > 0 && (
-      <section class="index" aria-label="Collections">
-        <div class="index-head">
-          <h2>Collections</h2>
-          <span>
-            {collections.length} {collections.length === 1 ? "body" : "bodies"} of work
-          </span>
-        </div>
-        <ol class="collections">
-          {collections.map((category, index) => (
-            <li>
-              <a href={getCategoryPath(category)}>
-                <span class="num">{pad(index)}</span>
-                <span class="title">{category.title}</span>
-                <span class="go">View →</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </section>
-    )
-  }
 </SiteLayout>

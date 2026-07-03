@@ -46,17 +46,34 @@ function isActive(href: string): boolean {
     />
   </head>
   <body class={bodyClass}>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <a class="brand" href={sitePath("/")} aria-label="Gwenevere Ivy Greenwood home">
+    <a
+      class="absolute left-4 -top-40 z-[100] bg-ink px-4 py-3 text-paper focus:top-4"
+      href="#main"
+    >
+      Skip to content
+    </a>
+    <header
+      class="sticky top-0 z-50 flex items-center justify-between gap-6 border-b border-line bg-[color-mix(in_srgb,var(--color-paper)_88%,transparent)] px-[var(--edge)] py-[1.15rem] backdrop-blur-[10px] max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-[0.9rem]"
+    >
+      <a
+        class="font-display text-[1.15rem] font-medium tracking-[0.01em] text-ink"
+        href={sitePath("/")}
+        aria-label="Gwenevere Ivy Greenwood home"
+      >
         Gwenevere Ivy Greenwood
       </a>
-      <nav class="site-nav" aria-label="Main navigation">
+      <nav
+        class="flex flex-wrap gap-8 max-[560px]:gap-x-5 max-[560px]:gap-y-[1.1rem]"
+        aria-label="Main navigation"
+      >
         {
           navItems.map((item) => (
             <a
               href={sitePath(item.href)}
-              class:list={{ active: isActive(item.href) }}
+              class:list={[
+                "border-b border-transparent pb-0.5 text-[0.86rem] tracking-[0.04em] text-ink-soft transition-[color,border-color] duration-200 ease-[ease] hover:border-accent hover:text-ink focus-visible:border-accent focus-visible:text-ink",
+                { "!border-accent !text-ink": isActive(item.href) },
+              ]}
               aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.label}
@@ -68,9 +85,11 @@ function isActive(href: string): boolean {
     <main id="main">
       <slot />
     </main>
-    <footer class="site-footer">
-      <p>Gwenevere Ivy Greenwood</p>
-      <p>Poetry, short fiction, and artwork.</p>
+    <footer class="border-t border-line bg-paper-2 px-[var(--edge)] py-10">
+      <p class="m-0 font-display text-[1.3rem] text-ink">Gwenevere Ivy Greenwood</p>
+      <p class="mt-[0.4rem] text-[0.85rem] text-ink-soft">
+        Poetry, short fiction, and artwork.
+      </p>
     </footer>
   </body>
 </html>

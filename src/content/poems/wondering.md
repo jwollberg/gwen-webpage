@@ -9,5 +9,4 @@ tags: []
 ---
 
 ...when i sit in class and cry,
-
 no one cares to ask me why...

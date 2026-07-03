@@ -8,26 +8,17 @@ music: ''
 tags: []
 ---
 
-same old faces           
-
+same old faces
 with cold black hearts
+their ugly world
+tore me apart
 
-their ugly world         
+lost all my friends
+then lost my mind
+lost all my trust
+in everyone
 
-tore me apart              
-
-lost all my friends                  
-
-then lost my mind      
-
-lost all my trust                      
-
-in everyone                
-
-i try so hard                
-
-but have to cry           
-
-the world hates me     
-
+i try so hard
+but have to cry
+the world hates me
 i don’t know why
