@@ -53,17 +53,17 @@ function isActive(href: string): boolean {
       Skip to content
     </a>
     <header
-      class="sticky top-0 z-50 flex items-center justify-between gap-6 border-b border-line bg-[color-mix(in_srgb,var(--color-paper)_88%,transparent)] px-[var(--edge)] py-[1.15rem] backdrop-blur-[10px] max-[560px]:flex-col max-[560px]:items-start max-[560px]:gap-[0.9rem]"
+      class="sticky top-0 z-50 flex flex-col items-center gap-[0.85rem] border-b border-line bg-[color-mix(in_srgb,var(--color-paper)_88%,transparent)] px-[var(--edge)] py-[1.15rem] text-center backdrop-blur-[10px]"
     >
       <a
-        class="font-display text-[1.15rem] font-medium tracking-[0.01em] text-ink"
+        class="font-display text-[clamp(1.6rem,3.5vw,2.2rem)] font-medium tracking-[0.01em] text-ink"
         href={sitePath("/")}
         aria-label="Gwenevere Ivy Greenwood home"
       >
         Gwenevere Ivy Greenwood
       </a>
       <nav
-        class="flex flex-wrap gap-8 max-[560px]:gap-x-5 max-[560px]:gap-y-[1.1rem]"
+        class="flex flex-wrap justify-center gap-8 max-[560px]:gap-x-5 max-[560px]:gap-y-[1.1rem]"
         aria-label="Main navigation"
       >
         {

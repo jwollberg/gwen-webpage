@@ -12,7 +12,7 @@ C:\Users\joshw\Projects\Websites\Website-Gwenevere Greenwood
 The GitHub repository is:
 
 ```text
-https://github.com/gwengreenwood/gwen-webpage
+https://github.com/jwollberg/gwen-webpage.git
 ```
 
 The live site domain is:
@@ -26,9 +26,10 @@ There is no web admin / CMS.
 
 ## Repository Access
 
-This computer's Git/`gh` is signed in as GitHub user **jwollberg**, who is a
-**collaborator with write access** to `gwengreenwood/gwen-webpage`. Normal
-`git push` to `main` works directly — no personal access token needed.
+This computer's Git/`gh` is signed in as GitHub user **jwollberg**, who **owns**
+`jwollberg/gwen-webpage`. Normal `git push` to `main` works directly — no personal
+access token needed. (The repo used to live at `gwengreenwood/gwen-webpage`; it was
+transferred to jwollberg, and GitHub redirects any old-URL pushes to the new one.)
 
 One caveat: pushing changes under `.github/workflows/` needs the credential to
 include the **workflow** scope. If a push is rejected with a "workflow scope"
@@ -55,19 +56,19 @@ git status -sb
 git add -A
 git commit -m "Short plain-English description"
 git push
-gh run list --repo gwengreenwood/gwen-webpage --limit 3
+gh run list --repo jwollberg/gwen-webpage --limit 3
 ```
 
 If a new deploy run starts, watch it:
 
 ```powershell
-gh run watch --repo gwengreenwood/gwen-webpage --exit-status
+gh run watch --repo jwollberg/gwen-webpage --exit-status
 ```
 
 If `gh` is not on PATH, use:
 
 ```powershell
-& 'C:\Program Files\GitHub CLI\gh.exe' run list --repo gwengreenwood/gwen-webpage --limit 3
+& 'C:\Program Files\GitHub CLI\gh.exe' run list --repo jwollberg/gwen-webpage --limit 3
 ```
 
 ## Protect Content
@@ -119,7 +120,7 @@ Keep `SITE_BASE=/` while the custom domain is active.
 If the workflow fails, read the failed log before guessing:
 
 ```powershell
-gh run view --repo gwengreenwood/gwen-webpage --log-failed
+gh run view --repo jwollberg/gwen-webpage --log-failed
 ```
 
 ## Live Site Check
