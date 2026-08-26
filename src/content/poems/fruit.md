@@ -1,6 +1,6 @@
 ---
 title: fruit
-category: dream-catcher
+category: nebula-orion
 image: /media/A9 earth_s conception.jpg
 imageBrightness: 50
 textColor: '#fefbfb'

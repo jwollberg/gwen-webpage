@@ -1,6 +1,6 @@
 ---
 title: cool mauve
-category: dream-catcher
+category: nebula-orion
 image: /media/A8 genesis.jpg
 imageBrightness: null
 textColor: '#b77695'

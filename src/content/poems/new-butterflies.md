@@ -1,6 +1,6 @@
 ---
 title: new butterflies
-category: dream-catcher
+category: nebula-orion
 image: /media/5x7 2.JPG
 imageBrightness: 75
 textColor: '#f7fb04'

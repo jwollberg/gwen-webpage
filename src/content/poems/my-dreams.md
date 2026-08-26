@@ -1,6 +1,6 @@
 ---
 title: my dreams
-category: dream-catcher
+category: nebula-orion
 image: /media/A24 reflecting sunset.jpg
 imageBrightness: null
 textColor: '#9bd4f8'
