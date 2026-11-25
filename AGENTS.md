@@ -6,13 +6,13 @@ This project is the Gwen poetry website. It lives in the shared "Websites"
 workspace (see the master guide at `..\CLAUDE.md`) at:
 
 ```text
-C:\Users\joshw\Projects\Websites\Website-Gwenevere Greenwood
+C:\Projects\websites\gwenevere-greenwood-website
 ```
 
 The GitHub repository is:
 
 ```text
-https://github.com/jwollberg/gwen-webpage.git
+https://github.com/jwollberg/gwenevere-greenwood-website.git
 ```
 
 The live site domain is:
@@ -27,7 +27,7 @@ There is no web admin / CMS.
 ## Repository Access
 
 This computer's Git/`gh` is signed in as GitHub user **jwollberg**, who **owns**
-`jwollberg/gwen-webpage`. Normal `git push` to `main` works directly — no personal
+`jwollberg/gwenevere-greenwood-website`. Normal `git push` to `main` works directly — no personal
 access token needed. (The repo used to live at `gwengreenwood/gwen-webpage`; it was
 transferred to jwollberg, and GitHub redirects any old-URL pushes to the new one.)
 
@@ -56,19 +56,19 @@ git status -sb
 git add -A
 git commit -m "Short plain-English description"
 git push
-gh run list --repo jwollberg/gwen-webpage --limit 3
+gh run list --repo jwollberg/gwenevere-greenwood-website --limit 3
 ```
 
 If a new deploy run starts, watch it:
 
 ```powershell
-gh run watch --repo jwollberg/gwen-webpage --exit-status
+gh run watch --repo jwollberg/gwenevere-greenwood-website --exit-status
 ```
 
 If `gh` is not on PATH, use:
 
 ```powershell
-& 'C:\Program Files\GitHub CLI\gh.exe' run list --repo jwollberg/gwen-webpage --limit 3
+& 'C:\Program Files\GitHub CLI\gh.exe' run list --repo jwollberg/gwenevere-greenwood-website --limit 3
 ```
 
 ## Protect Content
@@ -125,7 +125,7 @@ to Vault once its DNS moves from Namecheap to Cloudflare (`AtheosHome/vault/READ
 If the workflow fails, read the failed log before guessing:
 
 ```powershell
-gh run view --repo jwollberg/gwen-webpage --log-failed
+gh run view --repo jwollberg/gwenevere-greenwood-website --log-failed
 ```
 
 ## Live Site Check
