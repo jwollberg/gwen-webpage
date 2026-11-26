@@ -117,10 +117,10 @@ SITE_BASE=/
 
 Keep `SITE_BASE=/` while the custom domain is active.
 
-The workflow's `vault` job also pushes the built site to the `site` branch. Vault
-(Josh's home server) copies it and is ready to serve the site; the domain switches
-to Vault once its DNS moves from Namecheap to Cloudflare (`AtheosHome/vault/README.md`,
-"Public websites", in `jwollberg/atheos-home`). Until then GitHub Pages serves it.
+The workflow's `vault` job pushes the built site to the `site` branch, and Vault
+(Josh's home server) copies it and serves it (`AtheosHome/vault/README.md`,
+"Public websites", in `jwollberg/atheos-home`). The domain's DNS is on Cloudflare
+(moved from Namecheap 2026-11-25); GitHub Pages is off.
 
 If the workflow fails, read the failed log before guessing:
 
@@ -138,5 +138,4 @@ https://gweneveregreenwood.com/poems/
 https://gweneveregreenwood.com/photography/
 ```
 
-If DNS is not ready yet, the GitHub Pages deploy can still succeed before the
-custom domain opens in a browser.
+Vault picks up a new build within a few minutes of the workflow finishing.
