@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gweneveregreenwood.com/sitemap-index.xml
