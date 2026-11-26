@@ -1,7 +1,7 @@
 # Gwenevere Ivy Greenwood
 
 A clean, static poetry and art site built with [Astro](https://astro.build) and
-hosted on GitHub Pages. Poems and collections are Markdown files; images live in
+hosted on Vault, Josh's home server. Poems and collections are Markdown files; images live in
 `public/media`. All content is edited directly in the code (there is no web admin).
 
 ## Run it on your computer
@@ -65,21 +65,16 @@ Collection files live in `src/content/categories`. Each has a `title` and an
 `order` (sort position). A poem joins a collection by matching its `category`
 to the collection file name (without `.md`).
 
-## Publish to GitHub Pages
+## Publish
 
 Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the
-site and deploys it automatically.
+site and pushes the finished pages to the `site` branch. Vault (Josh's home
+server) copies that branch and serves it within a few minutes.
 
 ## Custom domain
 
-`public/CNAME` points GitHub Pages at `gweneveregreenwood.com`. In the domain
-host's DNS, point the apex domain to GitHub Pages with these `A` records:
-
-```text
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
+`gweneveregreenwood.com` is on Cloudflare (since 2026-11-25; it was on GitHub
+Pages before): the apex and `www` point at Vault's Cloudflare tunnel. How it
+works: `AtheosHome/vault/README.md`, "Public websites", in `jwollberg/atheos-home`.
 
 To change the sitemap domain, update the repository variable `SITE_URL`.

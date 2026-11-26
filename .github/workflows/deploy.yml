@@ -1,5 +1,10 @@
 name: Publish site
 
+# GitHub builds the site; Vault (Josh's home server) serves it. The vault job pushes the finished
+# pages as one commit to the site branch, which Vault copies within two minutes
+# (jwollberg/atheos-home, AtheosHome/vault/README.md, "Public websites"). GitHub Pages was turned
+# off on 2026-11-25.
+
 on:
   push:
     branches: [main]
@@ -7,11 +12,9 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: site
   cancel-in-progress: false
 
 jobs:
@@ -27,9 +30,6 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Install dependencies
         run: npm ci
 
@@ -39,25 +39,13 @@ jobs:
           SITE_URL: ${{ vars.SITE_URL || 'https://gweneveregreenwood.com' }}
           SITE_BASE: ${{ vars.SITE_BASE || '/' }}
 
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+      - name: Keep the built site
+        uses: actions/upload-artifact@v4
         with:
+          name: site
           path: dist
+          retention-days: 7
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # Vault (Josh's home server) serves the site: it copies this branch every two minutes
-  # (jwollberg/atheos-home, AtheosHome/vault/README.md, "Public websites"). Pages above stays on as the fallback
-  # until Josh turns it off.
   vault:
     runs-on: ubuntu-latest
     needs: build
@@ -67,14 +55,13 @@ jobs:
       - name: Get the built site
         uses: actions/download-artifact@v4
         with:
-          name: github-pages
+          name: site
+          path: site
 
       - name: Publish it to the site branch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir site
-          tar -xf artifact.tar -C site
           cd site
           git init -q -b site
           git config user.name "github-actions[bot]"
